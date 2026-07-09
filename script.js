@@ -67,7 +67,6 @@ function fmt(t) {
   h = h % 12 || 12;
   return h + ':' + m + ' ' + ampm;
 }
-
 // ===== إظهار الأخطاء =====
 function setError(id, has) {
   var inp = document.getElementById(id);

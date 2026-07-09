@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <!-- Open Graph -->
+<meta property="og:title" content="Volt Travel - حجز توصيل مدارس">
+<meta property="og:description" content="احجز توصيل أولادك للمدرسة دلوقتي، هنتواصل معاك لتأكيد السعر">
+<meta property="og:image" content="https://h-car-sooty.vercel.app/phato/bg.jpg">
+<meta property="og:url" content="https://h-car-sooty.vercel.app">
+<meta property="og:type" content="website">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Volt Travel - توصيل مدارس</title>
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="icon" type="image/png" href="phato/logo.png">
+  <link rel="apple-touch-icon" href="phato/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <div class="header">
+      <div class="logo-circle">
+     <img src="phato/Screenshot 2026-06-03 at 7.09.48 PM.png" alt="Volt Travel">
+      </div>
+      <h1>توصيل مدرستك</h1>
+      <p class="sub">املأ البيانات وسنتواصل معك لتأكيد السعر</p>
+    </div>
+
+    <div id="form-area">
+
+      <div class="card">
+        <div class="section-title"><span>👤</span> بيانات ولي الأمر</div>
+        <div class="field">
+          <label for="name">الاسم بالكامل <span style="color:#f5c518">*</span></label>
+          <input type="text" id="name" placeholder="مثال: أحمد محمد">
+          <div class="err-msg" id="err-name">من فضلك اكتب اسمك</div>
+        </div>
+        <div class="field">
+          <label for="phone">رقم التليفون <span style="color:#f5c518">*</span></label>
+          <input type="tel" id="phone" placeholder="01xxxxxxxxx" inputmode="numeric" maxlength="11" dir="ltr">
+          <div class="err-msg" id="err-phone">من فضلك اكتب رقم صحيح (01xxxxxxxxx)</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="section-title"><span>🏫</span> تفاصيل الرحلة</div>
+        <div class="field">
+          <label for="school">اسم المدرسة <span style="color:#f5c518">*</span></label>
+          <input type="text" id="school" placeholder="مثال: مدرسة النيل الدولية">
+          <div class="err-msg" id="err-school">من فضلك اكتب اسم المدرسة</div>
+        </div>
+        <div class="field">
+          <label for="from">نقطه التجمع<span style="color:#f5c518">*</span></label>
+          <input type="text" id="from" placeholder="مثال: مدينة نصر، القاهرة">
+          <div class="err-msg" id="err-from">من فضلك اكتب نقطة البداية</div>
+        </div>
+        <div class="field">
+          <label for="to">نقطه النهايه <span style="color:#f5c518">*</span></label>
+          <input type="text" id="to" placeholder="مثال: مدرسة النيل الدولية">
+          <div class="err-msg" id="err-to">من فضلك اكتب نقطة النهاية</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="section-title"><span>⚙️</span> تفاصيل الخدمة</div>
+
+        <div class="field">
+          <label>عدد الأطفال</label>
+          <div class="count-ctrl">
+            <button class="count-btn" onclick="change('kids', -1)" type="button" aria-label="تقليل عدد الأطفال">−</button>
+            <span class="count-val" id="kids-val">1</span>
+            <button class="count-btn" onclick="change('kids', 1)" type="button" aria-label="زيادة عدد الأطفال">+</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>عربية خاصة بأولادك ولا مشتركة؟</label>
+          <div class="toggle-group">
+            <button class="toggle-btn active" id="share-private" onclick="setShare(true)" type="button">🔒 خاصة بأولادي بس</button>
+            <button class="toggle-btn" id="share-shared" onclick="setShare(false)" type="button">👨‍👩‍👧‍👦 مشتركة مع أطفال تانيين</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>عدد مرات التوصيل في الاسبوع</label>
+          <div class="count-ctrl">
+            <button class="count-btn" onclick="change('times', -1)" type="button" aria-label="تقليل عدد مرات التوصيل">−</button>
+            <span class="count-val" id="times-val">1</span>
+            <button class="count-btn" onclick="change('times', 1)" type="button" aria-label="زيادة عدد مرات التوصيل">+</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>وقت الرحلة</label>
+          <div class="time-row">
+            <div>
+              <div class="time-label">من الساعة</div>
+              <input type="time" id="time-from" value="06:30">
+            </div>
+            <div class="time-sep">↔</div>
+            <div>
+              <div class="time-label">لحد الساعة</div>
+              <input type="time" id="time-to" value="07:30">
+            </div>
+          </div>
+          <div class="err-msg" id="err-time">وقت النهاية لازم يكون بعد وقت البداية</div>
+        </div>
+
+        <!-- نوع العربية -->
+        <div class="field">
+          <label for="car-type">نوع العربية</label>
+          <div class="select-wrap">
+            <select id="car-type" onchange="onCarTypeChange()">
+              <option value="ملاكي">🚗 ملاكي</option>
+              <option value="ميكروباص">🚐 ميكروباص</option>
+            </select>
+            <span class="select-arrow">▾</span>
+          </div>
+        </div>
+
+        <!-- المكيف -->
+        <div class="field">
+          <label>عربية مكيفة؟</label>
+          <div class="toggle-group">
+            <button class="toggle-btn active" id="ac-yes" onclick="setAC(true)" type="button">❄️ آه</button>
+            <button class="toggle-btn" id="ac-no" onclick="setAC(false)" type="button">🚫 لأ</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="notes">ملاحظات إضافية (اختياري)</label>
+          <textarea id="notes" placeholder="مثال: حساسية غذائية، احتياجات خاصة، الخ..."></textarea>
+        </div>
+      </div>
+
+      <button class="submit-btn" id="submit-btn" onclick="submitForm()" type="button">
+        إرسال الطلب
+      </button>
+
+    </div>
+
+    <div class="success-box" id="success-box">
+      <div class="success-icon">✅</div>
+      <h2>تم إرسال طلبك!</h2>
+      <p>استلمنا بياناتك وهنتواصل معاك لتأكيد السعر 🚗</p>
+      <button class="reset-btn" onclick="resetForm()">إرسال طلب جديد</button>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

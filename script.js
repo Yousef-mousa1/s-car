@@ -1,7 +1,7 @@
-var SHEET_URL = 'https://script.google.com/macros/s/AKfycbwHZELAu6-ZApLifwluaTlBfLGTCnwOhPN4gerxYs0Y1QMIlz2HwOiWpeo52bBZD4a-/exec';
-var counts = { kids: 1, times: 1 };
-var mins   = { kids: 1, times: 1 };
-var maxs   = { kids: 5, times: 7 };
+var SHEET_URL = 'https://script.google.com/macros/s/AKfycbyFWl5PJdoPTdgngM1QHbuvphl-_xjo00hqY8NHW1rI0B8MNwiVLqle-d1RnbVtf2J0/exec';
+var counts = { kids: 1 };
+var mins   = { kids: 1 };
+var maxs   = { kids: 5 };
 
 var acValue = true;
 
@@ -131,7 +131,6 @@ function submitForm() {
     to:       to,
     kids:     String(counts.kids),
     shareType: shareValue ? 'خاصة' : 'مشتركة',
-    times:    String(counts.times),
     timeFrom: fmt(tFrom),
     timeTo:   fmt(tTo),
     carType:  carType,
@@ -170,10 +169,8 @@ function resetForm() {
   document.getElementById('car-type').value  = 'ملاكي';
 
   counts.kids  = 1;
-  counts.times = 1;
   maxs.kids    = 5;
   document.getElementById('kids-val').textContent  = '1';
-  document.getElementById('times-val').textContent = '1';
 
   setAC(true);
   setShare(true);

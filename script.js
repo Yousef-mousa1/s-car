@@ -1,7 +1,7 @@
 var SHEET_URL = 'https://script.google.com/macros/s/AKfycbwHZELAu6-ZApLifwluaTlBfLGTCnwOhPN4gerxYs0Y1QMIlz2HwOiWpeo52bBZD4a-/exec';
 var counts = { kids: 1, times: 1 };
 var mins   = { kids: 1, times: 1 };
-var maxs   = { kids: 4, times: 7 };
+var maxs   = { kids: 5, times: 7 };
 
 var acValue = true;
 
@@ -26,9 +26,9 @@ function onCarTypeChange() {
     maxs.kids = 12;
   } else {
     maxs.kids = 4;
-    if (counts.kids > 4) {
-      counts.kids = 4;
-      document.getElementById('kids-val').textContent = '4';
+    if (counts.kids > 5) {
+      counts.kids = 5;
+      document.getElementById('kids-val').textContent = '5';
     }
   }
 }
@@ -171,7 +171,7 @@ function resetForm() {
 
   counts.kids  = 1;
   counts.times = 1;
-  maxs.kids    = 4;
+  maxs.kids    = 5;
   document.getElementById('kids-val').textContent  = '1';
   document.getElementById('times-val').textContent = '1';
 

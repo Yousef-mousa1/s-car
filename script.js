@@ -1,7 +1,7 @@
 var SHEET_URL = 'https://script.google.com/macros/s/AKfycbyFWl5PJdoPTdgngM1QHbuvphl-_xjo00hqY8NHW1rI0B8MNwiVLqle-d1RnbVtf2J0/exec';
 var counts = { kids: 1 };
 var mins   = { kids: 1 };
-var maxs   = { kids: 5 };
+var maxs   = { kids: 4 };
 
 var acValue = true;
 
@@ -18,19 +18,6 @@ function setShare(val) {
   shareValue = val;
   document.getElementById('share-private').classList.toggle('active', val);
   document.getElementById('share-shared').classList.toggle('active', !val);
-}
-
-function onCarTypeChange() {
-  var carType = document.getElementById('car-type').value;
-  if (carType === 'ميكروباص') {
-    maxs.kids = 12;
-  } else {
-    maxs.kids = 4;
-    if (counts.kids > 5) {
-      counts.kids = 5;
-      document.getElementById('kids-val').textContent = '5';
-    }
-  }
 }
 
 function change(key, delta) {
@@ -168,7 +155,7 @@ function resetForm() {
   document.getElementById('car-type').value  = 'ملاكي';
 
   counts.kids  = 1;
-  maxs.kids    = 5;
+  maxs.kids    = 4;
   document.getElementById('kids-val').textContent  = '1';
 
   setAC(true);
